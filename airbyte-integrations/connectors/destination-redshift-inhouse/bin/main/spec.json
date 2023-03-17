@@ -1,0 +1,66 @@
+{
+  "documentationUrl": "https://docs.airbyte.com/integrations/destinations/redshift-inhouse",
+  "supportsIncremental": true,
+  "supportsNormalization": true,
+  "supportsDBT": true,
+  "supported_destination_sync_modes": ["overwrite", "append", "append_dedup"],
+  "connectionSpecification": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Redshift Destination Spec",
+    "type": "object",
+    "required": ["host", "port", "database", "username", "password", "schema"],
+    "additionalProperties": true,
+    "properties": {
+      "host": {
+        "description": "Host Endpoint of the Redshift Cluster (must include the cluster-id, region and end with .redshift.amazonaws.com)",
+        "type": "string",
+        "title": "Host",
+        "order": 1
+      },
+      "port": {
+        "description": "Port of the database.",
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 65536,
+        "default": 5439,
+        "examples": ["5439"],
+        "title": "Port",
+        "order": 2
+      },
+      "username": {
+        "description": "Username to use to access the database.",
+        "type": "string",
+        "title": "Username",
+        "order": 3
+      },
+      "password": {
+        "description": "Password associated with the username.",
+        "type": "string",
+        "airbyte_secret": true,
+        "title": "Password",
+        "order": 4
+      },
+      "database": {
+        "description": "Name of the database.",
+        "type": "string",
+        "title": "Database",
+        "order": 5
+      },
+      "schema": {
+        "description": "The default schema tables are written to if the source does not specify a namespace. Unless specifically configured, the usual value for this field is \"public\".",
+        "type": "string",
+        "examples": ["public"],
+        "default": "public",
+        "title": "Default Schema",
+        "order": 6
+      },
+      "jdbc_url_params": {
+        "title": "JDBC URL Params",
+        "description": "Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&'. (example: key1=value1&key2=value2&key3=value3).",
+        "type": "string",
+        "order": 7
+      }     
+    }
+  }
+}
+
