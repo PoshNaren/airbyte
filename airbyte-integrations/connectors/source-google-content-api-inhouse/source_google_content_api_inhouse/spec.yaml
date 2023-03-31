@@ -1,0 +1,35 @@
+documentationUrl: https://docsurl.com
+connectionSpecification:
+  $schema: http://json-schema.org/draft-07/schema#
+  title: Google Content API Source
+  type: object
+  required:
+    - access_token
+  properties:
+    merchant_id:
+      type: string
+      title: Merchant ID
+      description: >-
+        Your Merchant ID
+      order: 0
+    access_token:
+      type: string
+      title: Secret Key
+      description: >-
+        Stripe API key (usually starts with 'sk_live_'; find yours <a
+        href="https://dashboard.stripe.com/apikeys">here</a>).
+      airbyte_secret: true
+      order: 1
+    account_sample_user:
+      type: string
+      title: Account Sample User
+      description: >-
+          the email address associated with your Merchant Center account
+      order: 2
+    custom_queries:
+      type: array
+      title: Custom MAQL Queries
+      description: 
+      examples: [
+                "SELECT segments.ad_destination_type, campaign.advertising_channel_sub_type FROM campaign WHERE campaign.status = 'PAUSED'"
+                ]
