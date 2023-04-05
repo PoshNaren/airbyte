@@ -1,0 +1,6 @@
+*
+!Dockerfile
+!main.py
+!source_sendgrid_inhouse
+!setup.py
+!secrets
